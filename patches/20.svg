@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+
+  <style>
+    circle { stroke: red; }
+    .red { fill: red; }
+    .white { fill: white; }
+  </style>
+
+  <defs>
+    <g id="row">
+      <circle cx="10" cy="10" r="10" />
+      <circle cx="30" cy="10" r="10" />
+      <circle cx="50" cy="10" r="10" />
+      <circle cx="70" cy="10" r="10" />
+      <circle cx="90" cy="10" r="10" />
+    </g>
+  </defs>
+
+  <use href="#row" y="0" class="red" />
+  <use href="#row" y="20" class="white" />
+  <use href="#row" y="40" class="red" />
+  <use href="#row" y="60" class="white" />
+  <use href="#row" y="80" class="red" />
+
+
+</svg>

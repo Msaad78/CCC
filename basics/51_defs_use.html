@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Basic SVG</title>
+<link rel="stylesheet" href="../style.css">
+
+<h1>Composition</h1>
+<ul>
+  <li>The <code>defs</code> and <code>use</code> elements allow for template structures to be defined and used in different places throughout an image.</li>
+  <li>In this example a group called <code>shapes</code> is created within <code>defs</code>, so it does not appear in the document.  This group is then used twice, and in each case different positions and attributes are set causing the output to differ.</li>
+</ul>
+
+<svg width=240 height=200>
+  <defs>
+    <g id="shapes">
+      <path d="M20,20 L20,80 80,80 80,50" />
+      <path d="M100,20 L100,80 160,80 160,50 z" />
+      <path d="M180,20 L180,80 C220,80 220,20 180,20 z" />
+    </g>
+  </defs>
+  <use href="#shapes" x=0 y=0 stroke="red" stroke-width="5"></use>
+  <use href="#shapes" x=0 y=100 stroke="blue" stroke-width="3" fill="bisque"></use>
+</svg>

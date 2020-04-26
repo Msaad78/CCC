@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Basic SVG</title>
+<link rel="stylesheet" href="../style.css">
+
+<h1>Animation</h1>
+<ul>
+  <li>Animation can be achived through CSS keyframes.</li>
+</ul>
+
+<svg width=600 height=600 viewBox="0 0 100 100">
+
+  <style>
+
+    @keyframes spin1 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes spin2 {
+      0% { transform: scale(0.75) rotate(0deg); }
+      100% { transform: scale(0.75) rotate(360deg); }
+    }
+
+    .s1 {
+        fill: red;
+        stroke: yellow;
+        animation: spin1 19s linear infinite;
+    }
+    .s2 {
+        fill: yellow;
+        stroke: red;
+        animation: spin2 19.1s linear infinite reverse;
+    }
+  </style>
+
+  <defs>
+    <g id="petal">
+      <path d="M0,0 L20,-10 C40,-20 40,20 20,10 z" />
+    </g>
+
+    <g id="ring">
+      <use href="#petal" transform="translate(5,0)"/>
+      <use href="#petal" transform="rotate(45) translate(5,0)" />
+      <use href="#petal" transform="rotate(90) translate(5,0)" />
+      <use href="#petal" transform="rotate(135) translate(5,0)" />
+      <use href="#petal" transform="rotate(180) translate(5,0)" />
+      <use href="#petal" transform="rotate(225) translate(5,0)" />
+      <use href="#petal" transform="rotate(270) translate(5,0)" />
+      <use href="#petal" transform="rotate(315) translate(5,0)" />
+    </g>
+
+    <g id="rings" >
+      <use href="#ring" transform="rotate(0)" class="s1" />
+      <use href="#ring" transform="rotate(22.5)" class="s2"/>
+    </g>
+
+  </defs>
+  <use href="#rings" x=50 y=50 stroke-width="1"></use>
+</svg>

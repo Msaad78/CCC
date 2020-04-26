@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<meta charset="utf8-8">
+<title>SVG XML</title>
+<link rel="stylesheet" href="../style.css">
+
+<h1>The viewBox</h1>
+<ul>
+  <li>The <code>viewBox</code> attribute is what makes SVG scaling truly controllable.</li>
+  <li>An SVG document describes shapes on an imaginary surface.  The viewBox attribute describes what portion of that surface will be looked at, and scaled to fit the width and height of the image.</li>
+  <li>These three images contain the same content.</li>
+  <li>In the first, the <code>viewBox</code> matches the <code>width</code> and <code>height</code>, so the picture appears as it would if there were no viewbox.
+  <img src="viewbox0.svg" alt="three overlapping rectangles" >
+  </li>
+  <li>In the second, the <code>width</code> and <code>height</code> are doubled, but there is no <code>viewBox</code> so the rectangles now apppear in the corner of the image.<img src="viewbox1.svg" alt="three overlapping rectangles" ></li>
+  <li>In the third example a <code>viewBox</code> is added that that focus on the area around the rectangles, so they rectangles now fill the image.<img src="viewbox2.svg" alt="three overlapping rectangles" ></li>
+  <li>In the final example, the <code>viewBox</code> focuses on a small area of the image, making the rectangles appear zoomed in.<img src="viewbox3.svg" alt="three overlapping rectangles" ></li>
+</ul>

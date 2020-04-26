@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Basic SVG</title>
+<link rel="stylesheet" href="../style.css">
+
+<h1>Transformation</h1>
+<ul>
+  <li>The <code>transform</code> attribute enables any element to be altered (e.g. scaled, rotated).</li>
+</ul>
+
+<svg width=600 height=600 viewBox="0 0 100 100">
+
+  <style>
+    svg { fill: none; }
+  </style>
+
+  <defs>
+    <g id="petal">
+      <path d="M0,0 L20,-10 C40,-20 40,20 20,10 z" />
+    </g>
+
+    <g id="ring">
+      <use href="#petal" transform="translate(5,0)"/>
+      <use href="#petal" transform="rotate(45) translate(5,0)" />
+      <use href="#petal" transform="rotate(90) translate(5,0)" />
+      <use href="#petal" transform="rotate(135) translate(5,0)" />
+      <use href="#petal" transform="rotate(180) translate(5,0)" />
+      <use href="#petal" transform="rotate(225) translate(5,0)" />
+      <use href="#petal" transform="rotate(270) translate(5,0)" />
+      <use href="#petal" transform="rotate(315) translate(5,0)" />
+    </g>
+
+    <g id="rings" >
+      <use href="#ring" transform="rotate(0)" fill="red" stroke="yellow"/>
+      <use href="#ring" transform="rotate(22.5) scale(0.75)" fill="yellow" stroke="red"/>
+    </g>
+
+  </defs>
+  <use href="#rings" x=50 y=50 stroke-width="1"></use>
+</svg>

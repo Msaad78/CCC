@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scalable Vector Graphics</title>
+
+<style>
+
+  :root {
+    --bg: #a00;
+    --fg: #EEE;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  main {
+    font-family: sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 12em 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "title intro""links stuff";
+  }
+
+  main>h1 {
+    grid-area: title;
+  }
+
+  main>header {
+    grid-area: intro;
+  }
+
+  main>nav {
+    grid-area: links;
+    overflow: scroll;
+  }
+
+  main>#f1 {
+    grid-area: stuff;
+  }
+
+  header,
+  nav,
+  h1 {
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  header,
+  h1 {
+    padding: 1rem;
+  }
+
+  nav>p,
+  nav>ul a {
+    font-size: 1em;
+    width: 100%;
+    display: block;
+    padding: 0.5rem 1.5rem;
+    text-decoration: none;
+    background: var(--bg);
+    color: var(--fg);
+  }
+
+  nav>p {
+    padding-top: 1.5rem;
+    padding-left: 1rem;
+    font-weight: bold;
+    font-size: 120%;
+  }
+
+
+  ul {
+    display: contents;
+    list-style-type: none;
+    margin-bottom: 2rem;
+  }
+
+  li {
+    display: contents;
+    width: 100%;
+  }
+
+  #f1 {
+    height: 100%;
+    width: 100%;
+    padding: 2em;
+  }
+
+  .active {
+    background: var(--fg);
+    color: var(--bg);
+}
+</style>
+
+<main>
+
+  <h1>SVG</h1>
+
+  <header>
+    <p>This page introduces <strong>Scalable Vector Graphics</strong>. You can <a
+        href="https://github.com/portsoc/svg101/archive/master.zip">download a zip</a> or clone the code from our <a
+        href="https://github.com/portsoc/svg101">GitHub repository</a>.</p>
+  </header>
+
+  <nav>
+    <p>Basics</p>
+    <ul>
+      <li><a href=basics/00_empty.html>An Empty Image</a></li>
+      <li><a href=basics/05_dimensions.html>Dimensions</a></li>
+      <li><a href=basics/10_shapes.html>Shapes</a></li>
+      <li><a href=basics/15_rect.html>Rectangle</a></li>
+      <li><a href=basics/16_fill.html>Fill Colour</a></li>
+      <li><a href=basics/17_stroke.html>Stroke</a></li>
+      <li><a href=basics/20_circle.html>Circle</a></li>
+      <li><a href=basics/25_ellipse.html>Ellipse</a></li>
+      <li><a href=basics/30_line.html>Line</a></li>
+      <li><a href=basics/35_polyline.html>Polyline</a></li>
+      <li><a href=basics/40_polygon.html>Polygon</a></li>
+      <li><a href=basics/45_path.html>Path</a></li>
+      <li><a href=basics/47_text.html>Text</a></li>
+      <li><a href=basics/50_group.html>Group</a></li>
+      <li><a href=basics/51_defs_use.html>Composition</a></li>
+      <li><a href=basics/52_trans.html>Transformation</a></li>
+      <li><a href=basics/53_animate.html>Animation</a></li>
+    </ul>
+    <p>SVG Files</p>
+    <ul>
+      <li><a href=files/00_intro.html>Intro</a></li>
+      <li><a href=files/05_template.html>Template</a></li>
+      <li><a href=files/10_rect.html>Rect Example</a></li>
+      <li><a href=files/20_size.html>Image Size</a></li>
+      <li><a href=files/30_viewbox.html>Image Scale</a></li>
+    </ul>
+    <p>UoP Logo</p>
+    <ul>
+      <li><a href="logo/1.svg">Template</a></li>
+      <li><a href="logo/2.svg">Grid</a></li>
+      <li><a href="logo/3.svg">Letter U</a></li>
+      <li><a href="logo/4.svg">Connector</a></li>
+      <li><a href="logo/5.svg">Letter P</a></li>
+      <li><a href="logo/6.svg">CSS</a></li>
+      <li><a href="logo/7.svg">Logo</a></li>
+    </ul>
+    <p>Patches</p>
+    <ul>
+      <li><a href="patches/index.html">Patches</a></li>
+    </ul>
+
+    </ul>
+  </nav>
+
+  <iframe id=f1 src="" frameborder=0></iframe>
+
+</main>
+
+<script>
+  /*
+   * Prep element references
+   */
+  const links = document.querySelectorAll("nav a");
+  const f1 = document.querySelector("#f1");
+
+  /*
+   * Find all menu items and intercept the click
+   * so that links open in the iFrame.
+   */
+  for (const link of links) {
+    link.addEventListener("click", (evt) => {
+      if (!overrideKey) {
+        evt.preventDefault();
+        activate(evt.target)
+      }
+    });
+  }
+
+  activate(links[0]);
+
+
+  /*
+   * Allow for Ctrl-click or Cmd-click to
+   * work as normal and open the link in
+   * the background.
+   */
+  let overrideKey = false;
+
+  document.addEventListener("keyup", (e) => {
+    overrideKey = false;
+  });
+
+  document.addEventListener("keydown", (e) => {
+    overrideKey = e.ctrlKey || e.metaKey || e.altKey || e.shiftKey;
+  });
+
+
+  /**
+   * An element that si activated has the 'active'
+   * class added (which has a style associated with
+   * it).  At the same time all other activateable
+   * elements have their active class removed.
+   */
+  function activate(elem) {
+    f1.src = elem.href;
+    for (const l of links) {
+      l.classList.remove("active");
+    }
+    elem.classList.add("active");
+  }
+</script>

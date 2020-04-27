@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Basic SVG</title>
+<link rel="stylesheet" href="../style.css">
+
+<style>
+  figcaption>input{
+    width:20em;
+  }
+</style>
+
+<h1>Interactive</h1>
+<ul>
+  <li>SVG images can interact with other page elements.</li>
+  <li>JavaScript <em>events</em> can be used to modify the SVG when input elements (e.g. range sliders) are moved.</li>
+</ul>
+
+<figure>
+  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width=400 height=100 viewBox="0 0 400 100">
+    <polygon id="myshape" points="0,20 0,80 60,80 60,50" stroke="red" stroke-width="5"/>
+  </svg>
+
+  <figcaption>
+    Position
+    <input id="x_range" type=range min=0 max=340 value=0></input>
+  </figcaption>
+</figure>
+
+<script>
+
+  const e = {
+    x: document.querySelector("#x_range"),
+    shape: document.querySelector("#myshape")
+  };
+
+  function repositionThing() {
+    const x = e.x.valueAsNumber;
+    const translation = `translate(${x})`;
+    e.shape.setAttributeNS(null, "transform", translation);
+  }
+
+  e.x.addEventListener("input", repositionThing);
+</script>

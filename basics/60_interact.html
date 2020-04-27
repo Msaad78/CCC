@@ -7,34 +7,37 @@
 <ul>
   <li>SVG images can interact with other page elements.</li>
   <li>JavaScript <em>events</em> can be used to modify the SVG when input elements (e.g. range sliders) are moved.</li>
+  <li>Adjust the image with these sliders.
+    <ul>
+      <li><input id="x_range" type=range value=0 min=0 max=340></input> x position.</li>
+      <li><input id="rotation" type=range value=0 min=0 max=360></input> rotation.</li>
+    </ul>
+  </li>
 </ul>
 
 <svg width=400 height=100>
+  <style>
+    #myshape { transform-origin: 30px 60px; }
+  </style>
   <polygon id="myshape"
     points="0,20 0,80 60,80 60,50"
     stroke="red" stroke-width="5"/>
 </svg>
 
-<label>
-  Position
-  <input
-    id="x_range" type=range
-    value=0 min=0 max=340>
-  </input>
-</label>
-
 <script>
 
-  const e = {
+  const el = {
     x: document.querySelector("#x_range"),
+    r: document.querySelector("#rotation"),
     shape: document.querySelector("#myshape")
   };
 
   function repositionThing() {
-    const x = e.x.valueAsNumber;
-    const translation = `translate(${x})`;
-    e.shape.setAttributeNS(null, "transform", translation);
+    const x = el.x.valueAsNumber;
+    const r = el.r.valueAsNumber;
+    const translation = `translate(${x}) rotate(${r})`;
+    el.shape.setAttributeNS(null, "transform", translation);
   }
-
-  e.x.addEventListener("input", repositionThing);
+  el.x.addEventListener("input", repositionThing);
+  el.r.addEventListener("input", repositionThing);
 </script>

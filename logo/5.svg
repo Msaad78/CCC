@@ -8,7 +8,7 @@
   <path d="M3,1 L3,4 L2,5 L2,2 z" fill="#0077b1" />
 
   <!-- P shape -->
-  <path d="M2,2 L3,2 A1 1 0 0 1 3 4 L3,4 L2,5 z" fill="#61135f" />
+  <path d="M2,2 L3,2 A1 1 0 0 1 3 4 L2,5 z" fill="#61135f" />
 
   <!-- Reference Grid (for removal later) -->
   <g stroke="#99F" stroke-width="0.02">

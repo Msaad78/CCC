@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+
+  <style>
+    .r { fill: white; stroke: red; }
+    .w { fill: red;   stroke: red; }
+  </style>
+
+  <script>//<![CDATA[
+
+  function createCircles(countX, countY) {
+    let t=0;
+    for (let y=0; y<countY; y++) {
+      for (let x=0; x<countX; x++) {
+        let c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        c.setAttribute("r", 10);
+        c.setAttribute("cx", 10+x*20);
+        c.setAttribute("cy", 10+y*20);
+        c.setAttribute("class", (t++ % (2*countX) < countX) ? "w" : "r");
+        document.rootElement.append(c);
+      }
+    }
+
+  }
+
+  function init() {
+    createCircles(5,5);
+  } 
+
+  document.rootElement.addEventListener('load', init);
+
+  //]]></script>
+</svg>
+
+

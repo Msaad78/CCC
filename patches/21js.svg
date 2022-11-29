@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+
+  <script>
+    //<![CDATA[
+    function init() {
+      for (let x=0; x<100; x+=10) {
+        let u = document.createElementNS("http://www.w3.org/2000/svg", "use");
+        u.setAttribute("href", "#r");
+        u.setAttribute("x", x);
+        u.setAttribute("y", 90-x);
+        document.rootElement.append(u);
+      }
+    } 
+
+    document.rootElement.addEventListener('load', init);
+  //]]>
+  </script>
+
+  <defs>
+    <rect id="r" x="0" y="0" width="10" height="10" fill="red"/>
+  </defs>
+
+</svg>

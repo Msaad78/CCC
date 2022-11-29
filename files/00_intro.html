@@ -5,7 +5,20 @@
 
 <h1>SVG Files</h1>
 <ul>
-  <li>SVG images can be created <em>inline</em> in an HTML document <em>or</em> they can exist as documents in their own right, usually with the file extension <code>.svg</code>.
+  <li>SVG images can be created <em>inline</em> in an HTML document, thus:
+    <svg>
+      <circle cx="50" cy="50" r="50" fill="#009fff" />
+      <circle cx="50" cy="50" r="25" fill="#61135f" />
+    </svg>
   </li>
-  <li>SVG files can be used with the <code>img</code> element, just like bitmaps.</li>
+
+  <li>Any SVG markup can also exist as a separate document, usually with the file extension <code>.svg</code>. e.g. <a href="two_circles.svg">two_circles.svg</a></li>
+ 
+  <li>SVG files can be used with the <code>img</code> element, just like bitmaps, like this:
+
+    <img src="two_circles.svg" alt="concentric circles">
+
+  </li>
+
 </ul>
+

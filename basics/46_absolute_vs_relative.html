@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Basic SVG</title>
+<link rel="stylesheet" href="../style.css">
+
+<h1>Absolute vs Relative Movement</h1>
+<ul>
+  <li>When defining a path we choosing whether to move or draw a line is achieved with <code>M</code> and <code>L</code>.</li>
+  <li>In this example chevrons are drawn by selectvely using <code>M</code> and <code>L</code></li>
+</ul>
+
+<svg width=260 height=100>
+  <path fill="none" stroke="blue" stroke-width="4"
+          d="M20,60 L40,40 60,60
+             M80,60 L100,40 120,60
+             M140,60 L160,40 180,60
+             M200,60 L220,40 240,60
+             " />
+</svg>
+
+<ul>
+  <li>Drawing the above image required that every point had to be manually calculated.</li>
+  <li>Using lowercase <code>m</code> and <code>l</code> will move <em>relative</em> to the current position, whcih can sometimes remove the all but the caclculation of the initial point, thus:</li>
+</ul>
+
+<svg width=260 height=100>
+  <path fill="none" stroke="blue" stroke-width="4"
+          d=" M20,60 l20,-20 20,20
+              m20,0  l20,-20 20,20
+              m20,0  l20,-20 20,20
+              m20,0  l20,-20 20,20
+             " />
+</svg>
+
+<ul>
+  <li>NB: Regardless of what case letter you use the first point is always considered to be an absolute coordinate rather than a relative one.</li>
+</ul>
+

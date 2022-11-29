@@ -17,6 +17,7 @@ body {
 svg, img {
   display: block;
   border: var(--brd) dashed 0.1em;
+  margin: 1em auto 2em auto;
 }
 
 code {
@@ -46,3 +47,6 @@ section>section>section h1 {
   background: #666;
 }
 
+ul {
+  margin-bottom: 2em;
+}
